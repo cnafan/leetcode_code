@@ -7,3 +7,5 @@
 - 排序：最适合链表的排序算法是归并排序
 
 
+队列使用linkedList  
+`Queue<TreeNode> queue = new LinkedList<>();`        
