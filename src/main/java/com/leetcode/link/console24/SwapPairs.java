@@ -3,6 +3,26 @@ package com.leetcode.link.console24;
 import com.leetcode.link.ListNode;
 
 public class SwapPairs {
+
+    /**
+     * 递归
+     * @param head
+     * @return
+     */
+    public ListNode swapPairs2(ListNode head) {
+        if (head==null||head.next==null) {
+            return head;
+        }
+        ListNode second=head.next;
+        head.next=swapPairs(second.next);
+        second.next=head;
+        return second;
+    }
+    /**
+     * 迭代
+     * @param head
+     * @return
+     */
     public ListNode swapPairs(ListNode head) {
         ListNode dummyNode=new ListNode(-1);
         dummyNode.next=head;
