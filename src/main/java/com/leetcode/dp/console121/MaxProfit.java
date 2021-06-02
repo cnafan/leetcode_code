@@ -9,7 +9,7 @@ package com.leetcode.dp.console121;
 public class MaxProfit {
     /**
      * 分析规律：在数组为：[7,1,5,3,6,4]时，第一天的收益必然为0，第二天的收益也为0，第三天的最大收益为4.
-     * 也就是第二天的股票收益应该在前一天股票最大收益与当天股票值和到前一天为止的股票最小值之差之间取出最大。
+     * 也就是第二天的股票收益应该在前一天股票最大收益与（当天股票值和到前一天为止的股票最小值之差）之间取出最大。
      *
      *
      * @param prices
@@ -31,7 +31,6 @@ public class MaxProfit {
         return dp[prices.length-1];
     }
     public int maxProfit2(int[] prices) {
-
         int[] dp = new int[prices.length + 1];
         int[] mini1 = new int[prices.length + 1];
         mini1[0] = prices[0];
@@ -61,24 +60,16 @@ public class MaxProfit {
 /**
  * 利润 dp[i][j]: 第i天买入 ，第j天卖出的利润
  * dp[i-1][j]: 第i-1天买入，第j天卖出的利润
- * <p>
+
  * dp[i][j]=max{dp[i-1][j]+(num[i]-num[i-1]),dp[i][j-1]+(num[j]-num[j-1])}
- * <p>
  * dp[0][0]=0
  * dp[1][j]=num[j]-num[0]
- * <p>
- * <p>
  * dp[i]: 前i天的最大收益
- * <p>
  * dp[i]=max{dp[i-1],(num[i]-min{num[i-1]}}
- * <p>
  * dp[0]=0
  * dp[1]=num[2]-num[1]
- * <p>
  * dp[i]: 前i天的最大收益
- * <p>
  * dp[i]=max{dp[i-1],(num[i]-min{num[i-1]}}
- * <p>
  * dp[0]=0
  * dp[1]=num[2]-num[1]
  */
