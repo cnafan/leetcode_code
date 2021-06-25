@@ -42,7 +42,7 @@ public class LengthOfLongestSubstring {
 //        }
 //        return res;
 //    }
-
+    // 滑动窗口
     public int lengthOfLongestSubstring(String s) {
         Map<Character,Integer> map=new HashMap<>();
 

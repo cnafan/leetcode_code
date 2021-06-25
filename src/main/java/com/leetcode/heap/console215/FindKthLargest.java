@@ -9,23 +9,24 @@ public class FindKthLargest {
 
     /**
      * 采用小顶堆 ，维护k个最大的元素，堆顶为所有元素最小值
+     * 优先队列实现小顶堆
      * @param nums
      * @param k
      * @return
      */
-//    public int findKthLargest(int[] nums, int k) {
-//
-//        PriorityQueue<Integer> heap=new PriorityQueue<>((n1,n2)->n1-n2);//小顶堆
-////        PriorityQueue<Integer> queue=new PriorityQueue<>(Comparator.comparingInt(n -> n));
-//
-//        for (int num:nums){
-//            heap.offer(num);
-//            if (heap.size()>k){
-//                heap.poll();
-//            }
-//        }
-//        return heap.peek();
-//    }
+    public int findKthLargest2(int[] nums, int k) {
+
+        PriorityQueue<Integer> heap=new PriorityQueue<>((n1,n2)->n1-n2);//小顶堆
+//        PriorityQueue<Integer> queue=new PriorityQueue<>(Comparator.comparingInt(n -> n));
+
+        for (int num:nums){
+            heap.offer(num);
+            if (heap.size()>k){
+                heap.poll();
+            }
+        }
+        return heap.peek();
+    }
 
 
     /**
