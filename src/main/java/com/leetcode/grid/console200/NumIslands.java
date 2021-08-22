@@ -14,7 +14,7 @@ public class NumIslands {
      * @param grid
      * @return
      */
-    public int numIslands1(char[][] grid) {
+    public int numIslands(char[][] grid) {
         if (grid == null || grid.length == 0) {
             return 0;
         }
@@ -103,7 +103,7 @@ public class NumIslands {
     }
 
     public static void main(String[] args) {
-        System.out.println(new NumIslands().numIslands2(new char[][]{{'1', '1', '0', '0', '0'}, {'1', '1', '0', '0', '0'}, {'0', '0', '1', '0', '0'}, {'0', '0', '0', '1', '1'}}));
+        System.out.println(new NumIslands().numIslands(new char[][]{{'1', '1', '0', '0', '0'}, {'1', '1', '0', '0', '0'}, {'0', '0', '1', '0', '0'}, {'0', '0', '0', '1', '1'}}));
     }
 
 

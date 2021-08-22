@@ -5,6 +5,81 @@ import java.util.Arrays;
 public class LongestPalindrome {
 
     /**
+     * 中心扩散
+     * 对于每一个元素，分别向两侧扩散先找到不一样的元素，然后同时对比
+     * https://leetcode-cn.com/problems/longest-palindromic-substring/solution/zhong-xin-kuo-san-fa-he-dong-tai-gui-hua-by-reedfa/
+     * @date : 2021-08-21 22:57
+     * @param s
+     * @return
+     */
+    public String longestPalindrome3(String s) {
+        // 特例
+        if (s.length() <2) {
+            return s;
+        }
+        int max=1;
+        int left=0,right=0;
+        int maxStart=-1;// left所处位置的前一个
+        for (int i = 0; i < s.length(); i++) {
+            left=i-1;
+            right=i+1;
+            int len=1;
+            while (left>=0&&s.charAt(left)==s.charAt(i)){
+                left--;
+                len++;
+            }
+            while (right<s.length()&&s.charAt(right)==s.charAt(i)){
+                right++;
+                len++;
+            }
+            while (left>=0&&right<s.length()&&s.charAt(left)==s.charAt(right)){
+                left--;
+                right++;
+                len+=2;
+            }
+            if (len>max){
+                max=len;
+                maxStart=left;
+            }
+        }
+        return s.substring(maxStart+1,maxStart+max+1);
+
+    }
+
+    /**
+     * dp[i][j]:表示i-j的串是否为回文
+     * dp[i][j]=dp[i-1][j+1]&&(i-1)==(j+1)
+     *
+     * dp[
+     * @date : 2021-08-21 22:57
+     * @param s
+     * @return
+     */
+    public String longestPalindrome4(String s) {
+
+        // 特例
+        int len = s.length();
+        if (len <2) {
+            return s;
+        }
+        int max=1;
+        int maxStart=0;// left所处位置
+        boolean[][] dp=new boolean[s.length()][s.length()];
+        for (int right = 1; right < s.length(); right++) {
+            for (int left = 0; left < right; left++) {
+                if (s.charAt(left)==s.charAt(right)&&(right-left<=2||dp[left+1][right-1])){
+                    dp[left][right]=true;
+                    if (max<right-left+1){
+                        max=right-left+1;
+                        maxStart=left;
+                    }
+                }
+            }
+        }
+        return s.substring(maxStart,maxStart+max);
+    }
+
+    /**
      * dp[i][j]:第i个字符到第j个字符之间的字符串是否为回文字符串
      *
      * （官方视频题解）https://leetcode-cn.com/problems/longest-palindromic-substring/solution/zui-chang-hui-wen-zi-chuan-by-leetcode-solution/
@@ -86,6 +161,6 @@ public class LongestPalindrome {
     }
 
     public static void main(String[] args) {
-        System.out.println(new LongestPalindrome().longestPalindrome("abababaa"));
+        System.out.println(new LongestPalindrome().longestPalindrome3("cbbd"));
     }
 }
