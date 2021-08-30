@@ -22,7 +22,6 @@ public class LengthOfLongestSubstring {
             max = Math.max(max, i - left + 1);
         }
         return max;
-
     }
 
     public static void main(String[] args) {

@@ -120,6 +120,7 @@ class LRUCacheByLhm {
     public LinkedHashMap<Integer, Integer> cacheMap;
 
     public LRUCacheByLhm(int capacity) {
+ // true 表示按照访问顺序排序，最近访问的放在头部，
         this.cacheMap = new LinkedHashMap<Integer, Integer>(capacity, 0.75f, true) {
             @Override
             protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
