@@ -26,7 +26,6 @@ public class DailyTemperatures {
                     res[pop] = i - pop;
                 }
                 stack.push(i);
-
             }
         }
         res[temperatures.length - 1] = 0;
