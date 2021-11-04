@@ -1,14 +1,8 @@
 package com.leetcode.link.console237;
 
-public class DeleteNode {
-    public class ListNode {
-        int val;
-        ListNode next;
+import com.leetcode.link.ListNode;
 
-        ListNode(int x) {
-            val = x;
-        }
-    }
+public class DeleteNode {
 
     public void deleteNode(ListNode node) {
         node.val=node.next.val;
